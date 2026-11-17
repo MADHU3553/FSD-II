@@ -4,34 +4,38 @@ A collection of practical experiments and applications developed as part of the 
 
 ## 🌐 Live Deployments
 
-### React Applications
+### React Frontend Applications (Vercel)
 
-| No. | Experiment Name | Live Deployment URL |
-|---:|---|---|
-| 1 | React JSX Rendering | [Live Demo](https://dear-fsd-ehp9.vercel.app/) |
-| 2 | React Multiple Components | [Live Demo](https://dear-fsd.vercel.app/) |
-| 3 | React HTML Rendering | [Live Demo](https://dear-fsd-z3ya.vercel.app/) |
-| 4 | React Conditional Rendering | [Live Demo](https://react-conditional-rendering-ten.vercel.app/) |
-| 5 | React Rendering Lists | [Live Demo](https://react-render-listing.vercel.app/) |
-| 6 | React State and Events | [Live Demo](https://react-state-events-henna.vercel.app/) |
-| 7 | React Form Events | [Live Demo](https://react-form-events-hazel.vercel.app/) |
-| 8 | React Router | [Live Demo](https://react-router-app-eta.vercel.app/) |
-| 9 | React Frontend CRUD | [Live Demo](https://react-frontend-crud-opal.vercel.app/) |
+| No. | Experiment Name | Live Deployment URL | Status |
+|---:|---|---|:---:|
+| 1 | React Conditional Rendering | [Live Demo](https://react-conditional-rendering-mocha.vercel.app/) | ✅ Live |
+| 2 | React Form Events | [Live Demo](https://react-form-events-drab.vercel.app/) | ✅ Live |
+| 3 | React Frontend CRUD | [Live Demo](https://react-frontend-crud-rho.vercel.app/) | ✅ Live |
+| 4 | React HTML Render | [Live Demo](https://react-html-render-gamma.vercel.app/) | ✅ Live |
+| 5 | React JSX Render | [Live Demo](https://react-jsx-render.vercel.app/) | ✅ Live |
+| 6 | React Nested Components | [Live Demo](https://react-nested-components-two.vercel.app/) | ✅ Live |
+| 7 | React Rendering Lists | [Live Demo](https://react-rendering-lists-bay.vercel.app/) | ✅ Live |
+| 8 | React State Events | [Live Demo](https://react-state-events-seven.vercel.app/) | ✅ Live |
+| 9 | React Router | [Live Demo](https://react-router-beta-swart.vercel.app/) | ✅ Live |
 
-### MERN Application
+### MERN Stack Application
 
-| Application | Live Deployment URL |
-|---|---|
-| MERN CRUD Frontend | [Live Demo](https://dear-fsd-mq8v.vercel.app/) |
-| MERN CRUD Backend | Deployment Pending |
+| Component | Experiment / Service | Live Deployment URL | Platform |
+|---|---|---|:---:|
+| Frontend | MERN CRUD Frontend | [Live Demo](https://mern-crud-frontend-steel.vercel.app/) | Vercel |
+| Backend | MERN CRUD Posts API | [Live API](https://full-stack-development-lab.onrender.com/) | Render |
 
-### Backend Applications
+### Backend Applications (Render)
 
-| Application | Live Deployment URL |
-|---|---|
-| Express Middleware API | [Live API](https://express-middleware-api.onrender.com/) |
-
-*Other backend applications will be deployed soon.*
+| No. | Experiment Name | Live Deployment URL | Status |
+|---:|---|---|:---:|
+| 1 | Products File Persistence | [Live API](https://file-persistent-app.onrender.com/api/v1/faculty) | ✅ Live |
+| 2 | MongoDB Express | [Live API](https://mongodb-express-app-xky0.onrender.com/api/v1/books) | ✅ Live |
+| 3 | MongoDB Mongoose Movies | [Live API](https://mongodb-mongoose-movies-app-zzof.onrender.com/) | ✅ Live |
+| 4 | MVC Auth | [Live API](https://mvc-auth-app-zegs.onrender.com/) | ✅ Live |
+| 5 | MVC Express | [Live API](https://mvc-express-app-fc7f.onrender.com/api/v1/movies) | ✅ Live |
+| 6 | Template Engine EJS | [Live API](https://template-engine-ejs-app-9nip.onrender.com/) | ✅ Live |
+| 7 | Express Middleware API | [Live API](https://express-middleware-api.onrender.com/) | ✅ Live |
 
 ---
 
