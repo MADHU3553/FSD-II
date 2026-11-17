@@ -1,3 +1,4 @@
+
 import express from 'express';
 
 const app = express();
@@ -7,7 +8,8 @@ app.use(express.json());
 
 const products = [];
 
-// POST - Create a new product URL: http://localhost:5000/products
+// POST - Create a new product
+// URL: /products
 app.post("/products", (req, res) => {
     const newProduct = req.body;
 
@@ -19,9 +21,7 @@ app.post("/products", (req, res) => {
     });
 });
 
-
 // GET - Read all products
-// URL: http://localhost:5000/products
 app.get("/products", (req, res) => {
     res.status(200).json({
         message: "Products fetched successfully",
@@ -29,9 +29,7 @@ app.get("/products", (req, res) => {
     });
 });
 
-
-// GET - Read product by ID URL: http://localhost:5000/products/:id
-
+// GET - Read product by ID
 app.get("/products/:id", (req, res) => {
     const productId = parseInt(req.params.id);
 
@@ -51,9 +49,7 @@ app.get("/products/:id", (req, res) => {
     }
 });
 
-
-// PUT - Update product by ID URL: http://localhost:5000/products/:id
-
+// PUT - Update product by ID
 app.put("/products/:id", (req, res) => {
     const productId = parseInt(req.params.id);
     const updateProduct = req.body;
@@ -63,7 +59,6 @@ app.put("/products/:id", (req, res) => {
     );
 
     if (productIndex !== -1) {
-
         products[productIndex] = {
             ...products[productIndex],
             ...updateProduct
@@ -73,19 +68,14 @@ app.put("/products/:id", (req, res) => {
             message: "Product updated successfully",
             data: products[productIndex]
         });
-
     } else {
-
         res.status(404).json({
             message: "Product not found"
         });
-
     }
 });
 
-
-
-// DELETE - Delete product by ID URL: http://localhost:5000/products/:id
+// DELETE - Delete product by ID
 app.delete("/products/:id", (req, res) => {
     const productId = parseInt(req.params.id);
 
@@ -94,7 +84,6 @@ app.delete("/products/:id", (req, res) => {
     );
 
     if (productIndex !== -1) {
-
         const deleteProduct =
             products.splice(productIndex, 1)[0];
 
@@ -102,38 +91,37 @@ app.delete("/products/:id", (req, res) => {
             message: "Product deleted successfully",
             data: deleteProduct
         });
-
     } else {
-
         res.status(404).json({
             message: "Product not found"
         });
-
     }
 });
 
+// Render-compatible server configuration
+const PORT = process.env.PORT || 5000;
 
-
-app.listen(5000, () => {
-    console.log(
-        "Server is running at http://localhost:5000"
-    );
+app.listen(PORT, "0.0.0.0", () => {
+    console.log(`Server is running on port ${PORT}`);
 });
 
-
-
-
 /*
-curl -X POST http://localhost:5000/products -H "Content-Type: application/json" -d "{\"id\":1,\"name\":\"Laptop\",\"price\":55000}"
-curl -X POST http://localhost:5000/products -H "Content-Type: application/json" -d "{\"id\":2,\"name\":\"Mobile\",\"price\":25000}"
-curl -X POST http://localhost:5000/products -H "Content-Type: application/json" -d "{\"id\":3,\"name\":\"Headphones\",\"price\":2000}"
-curl http://localhost:5000/products
-curl http://localhost:5000/products/1
-curl http://localhost:5000/products/2
-curl -X PUT http://localhost:5000/products/1 -H "Content-Type: application/json" -d "{\"name\":\"Gaming Laptop\",\"price\":65000}"
-curl -X PUT http://localhost:5000/products/2 -H "Content-Type: application/json" -d "{\"price\":22000}"
-curl http://localhost:5000/products/1
-curl -X DELETE http://localhost:5000/products/3
-curl -X DELETE http://localhost:5000/products/2
-curl http://localhost:5000/products
+Sample API requests:
+
+POST /products
+{"id":1,"name":"Laptop","price":55000}
+
+POST /products
+{"id":2,"name":"Mobile","price":25000}
+
+POST /products
+{"id":3,"name":"Headphones","price":2000}
+
+GET /products
+GET /products/1
+
+PUT /products/1
+{"name":"Gaming Laptop","price":65000}
+
+DELETE /products/3
 */
