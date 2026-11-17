@@ -10,6 +10,11 @@ const PORT = process.env.PORT || 5000;
 // Middleware to read JSON data from request body
 app.use(express.json());
 
+// Root route for health check
+app.get("/", (req, res) => {
+    res.status(200).json({ message: "Faculty File Persistence API is running" });
+});
+
 // Read faculty data
 const readData = () => {
     const data = fs.readFileSync("./data/faculty.json", "utf8");

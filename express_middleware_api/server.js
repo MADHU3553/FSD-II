@@ -49,6 +49,11 @@ const validatePatient = (req, res, next) => {
 
 app.use(logger);
 
+// Health check root route
+app.get("/", (req, res) => {
+    res.status(200).json({ message: "Express Middleware API is running" });
+});
+
 // CRUD OPERATIONS
 
 // POST - Create

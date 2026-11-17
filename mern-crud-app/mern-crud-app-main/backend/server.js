@@ -10,15 +10,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(cors({
-    origin: [
-        "https://full-stack-development-3gr1d4cuf-csp-ddd1.vercel.app"
-    ],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type"]
-}));
-
-app.use(express.json());
+app.use(cors());
 app.use(morgan("dev"));
 
 const port = process.env.PORT || 3000;
@@ -28,20 +20,21 @@ const dbName = process.env.DB_NAME;
 // Connect to MongoDB
 const connectDB = async () => {
     try {
-        await mongoose.connect(process.env.MONGO_URI, {
-            dbName: process.env.DB_NAME
-        });
-
-        console.log("MongoDB Connected Successfully");
-
-        app.listen(port,"0.0.0.0", () => {
-            console.log(`Server running on port ${port}`);
-        });
-
+        if (process.env.MONGO_URI) {
+            await mongoose.connect(process.env.MONGO_URI, {
+                dbName: process.env.DB_NAME
+            });
+            console.log("MongoDB Connected Successfully");
+        } else {
+            console.warn("MONGO_URI not provided; running without DB");
+        }
     } catch (error) {
         console.error("MongoDB Connection Failed:", error.message);
-        process.exit(1);
     }
+
+    app.listen(port, "0.0.0.0", () => {
+        console.log(`Server running on port ${port}`);
+    });
 };
 
   // Define the Post schema and model
