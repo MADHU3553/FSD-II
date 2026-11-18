@@ -56,26 +56,20 @@ Now that you have your repository on GitHub:
 2. Click **New +** → **Blueprint**.
 3. Select your repository: **`DearFSD`**.
 4. Render will read `render.yaml` and configure all 7 backend web services automatically.
-5. Click **Apply**.
-6. **Command to test and display all your Render links in a table:**
-   ```bash
-   node -e "
-   const s = [
-     { Experiment: '1. Products File Persistence', URL: 'https://file-persistent-app.onrender.com/api/v1/faculty' },
-     { Experiment: '2. MongoDB Express', URL: 'https://mongodb-express-app-xky0.onrender.com/api/v1/books' },
-     { Experiment: '3. MongoDB Mongoose Movies', URL: 'https://mongodb-mongoose-movies-app-zzof.onrender.com/' },
-     { Experiment: '4. MVC Auth', URL: 'https://mvc-auth-app-zegs.onrender.com/' },
-     { Experiment: '5. MVC Express', URL: 'https://mvc-express-app-fc7f.onrender.com/api/v1/movies' },
-     { Experiment: '6. Template Engine EJS', URL: 'https://template-engine-ejs-app-9nip.onrender.com/' },
-     { Experiment: '7. Express Middleware API', URL: 'https://express-middleware-api.onrender.com/' }
-   ];
-   console.table(s);
-   "
-   ```
+5. Click **Apply**. Render will build and deploy all 7 services in parallel.
+
+#### 📌 Where to Find YOUR Own Live Render Links:
+On Render, each account receives its own unique URLs (Render automatically appends a short unique identifier, e.g. `-xxxx.onrender.com`):
+1. In your **[Render Dashboard](https://dashboard.render.com)**, click on your **`DearFSD`** Blueprint group.
+2. All 7 services are listed in a table, with each service's **own live `.onrender.com` URL** displayed right under its name!
+3. Click on any service to copy your personal live URL or test its endpoints.
 
 ---
 
-## 🌐 Live Deployments & Reference Demos
+## 🌐 Reference Live Demos (Deployed by Mahendra Gampala)
+
+> [!NOTE]
+> The links below are live reference deployments created by the author for testing and previewing. When you deploy via the steps above, your own links will be generated in your Vercel and Render dashboards.
 
 ### React Frontend Applications (Vercel)
 
