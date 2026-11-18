@@ -14,20 +14,18 @@ app.use(cors());
 app.use(morgan("dev"));
 
 const port = process.env.PORT || 3000;
-const mongoUri = process.env.MONGO_URI;
-const dbName = process.env.DB_NAME;
+const DEFAULT_MONGO_URI = "mongodb+srv://deepikaarugalla_db_user:CTwGuWP9yQWmDb3p@cluster0.wvbmzxj.mongodb.net";
+const mongoUri = process.env.MONGO_URI || DEFAULT_MONGO_URI;
+const dbName = process.env.DB_NAME || "mernDB";
 
 // Connect to MongoDB
 const connectDB = async () => {
     try {
-        if (process.env.MONGO_URI) {
-            await mongoose.connect(process.env.MONGO_URI, {
-                dbName: process.env.DB_NAME
-            });
-            console.log("MongoDB Connected Successfully");
-        } else {
-            console.warn("MONGO_URI not provided; running without DB");
-        }
+        await mongoose.connect(mongoUri, {
+            dbName: dbName,
+            serverSelectionTimeoutMS: 5000
+        });
+        console.log("MongoDB Connected Successfully");
     } catch (error) {
         console.error("MongoDB Connection Failed:", error.message);
     }

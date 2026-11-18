@@ -22,6 +22,10 @@ services:
     envVars:
       - key: PORT
         value: 10000
+      - key: MONGO_URL
+        value: mongodb+srv://deepikaarugalla_db_user:CTwGuWP9yQWmDb3p@cluster0.wvbmzxj.mongodb.net
+      - key: DB_NAME
+        value: booksDB
 
   # 3. MongoDB Mongoose Movies
   - type: web
@@ -35,7 +39,7 @@ services:
       - key: PORT
         value: 10000
       - key: MONGO_URL
-        sync: false
+        value: mongodb+srv://deepikaarugalla_db_user:CTwGuWP9yQWmDb3p@cluster0.wvbmzxj.mongodb.net
       - key: DB_NAME
         value: movieDB
 
@@ -51,11 +55,11 @@ services:
       - key: PORT
         value: 10000
       - key: MONGO_URL
-        sync: false
+        value: mongodb+srv://deepikaarugalla_db_user:CTwGuWP9yQWmDb3p@cluster0.wvbmzxj.mongodb.net
       - key: DB_NAME
         value: authDB
       - key: JWT_SECRET
-        sync: false
+        value: default_jwt_secret_dev_key_12345
 
   # 5. MVC Express
   - type: web
@@ -69,7 +73,7 @@ services:
       - key: PORT
         value: 10000
       - key: MONGO_URL
-        sync: false
+        value: mongodb+srv://deepikaarugalla_db_user:CTwGuWP9yQWmDb3p@cluster0.wvbmzxj.mongodb.net
       - key: DB_NAME
         value: movieDB
 
@@ -85,9 +89,9 @@ services:
       - key: PORT
         value: 10000
       - key: MONGO_URI
-        sync: false
+        value: mongodb+srv://deepikaarugalla_db_user:CTwGuWP9yQWmDb3p@cluster0.wvbmzxj.mongodb.net
       - key: DB_NAME
-        value: productDB
+        value: productsDB
 
   # 7. MERN CRUD Backend (Express Middleware API)
   - type: web
@@ -113,6 +117,6 @@ services:
       - key: PORT
         value: 10000
       - key: MONGO_URI
-        sync: false
+        value: mongodb+srv://deepikaarugalla_db_user:CTwGuWP9yQWmDb3p@cluster0.wvbmzxj.mongodb.net
       - key: DB_NAME
         value: mernDB

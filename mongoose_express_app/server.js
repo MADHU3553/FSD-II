@@ -6,12 +6,13 @@ dotenv.config();
 const app = express()
 app.use(express.json());
 const port = process.env.PORT||8000;
-const dburl = process.env.MONGO_URL;
-const dbname = process.env.DB_NAME;
+const DEFAULT_MONGO_URL = "mongodb+srv://deepikaarugalla_db_user:CTwGuWP9yQWmDb3p@cluster0.wvbmzxj.mongodb.net";
+const dburl = process.env.MONGO_URL || DEFAULT_MONGO_URL;
+const dbname = process.env.DB_NAME || "movieDB";
 
 //connect to mongodb
 if (dburl) {
-  mongoose.connect(dburl, {dbName: dbname})
+  mongoose.connect(dburl, {dbName: dbname, serverSelectionTimeoutMS: 5000})
     .then(() => {
       console.log("Connected to MongoDB");
     })

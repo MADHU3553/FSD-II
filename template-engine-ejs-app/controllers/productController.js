@@ -1,4 +1,5 @@
 import Product from "../models/productModel.js";
+import mongoose from "mongoose";
 
 const createProductForm = (req, res) => {
   res.render("product-form", { product: null });
@@ -6,6 +7,9 @@ const createProductForm = (req, res) => {
 
 const createProduct = async (req, res) => {
   try {
+    if (mongoose.connection.readyState !== 1) {
+      return res.render("error", { error: "Database is connecting or offline. Please try again in a few seconds." });
+    }
     const { name, description, category, price } = req.body;
     const product = new Product({ name, description, category, price });
     await product.save();
@@ -17,6 +21,10 @@ const createProduct = async (req, res) => {
 
 const readProducts = async (req, res) => {
   try {
+    if (mongoose.connection.readyState !== 1) {
+      console.warn("MongoDB is not connected. Rendering empty products list.");
+      return res.render("products", { products: [] });
+    }
     const products = await Product.find({});
     res.render("products", { products });
   } catch (error) {
@@ -26,6 +34,9 @@ const readProducts = async (req, res) => {
 
 const readProductById = async (req, res) => {
   try {
+    if (mongoose.connection.readyState !== 1) {
+      return res.render("error", { error: "Database is connecting or offline. Please try again in a few seconds." });
+    }
     const { id } = req.params;
     const product = await Product.findById(id);
     res.render("product", { product });
@@ -36,6 +47,9 @@ const readProductById = async (req, res) => {
 
 const updateProductForm = async (req, res) => {
   try {
+    if (mongoose.connection.readyState !== 1) {
+      return res.render("error", { error: "Database is connecting or offline. Please try again in a few seconds." });
+    }
     const { id } = req.params;
     const product = await Product.findById(id);
     res.render("product-form", { product });
@@ -46,6 +60,9 @@ const updateProductForm = async (req, res) => {
 
 const updateProduct = async (req, res) => {
   try {
+    if (mongoose.connection.readyState !== 1) {
+      return res.render("error", { error: "Database is connecting or offline. Please try again in a few seconds." });
+    }
     const { id } = req.params;
     const { name, description, category, price } = req.body;
     await Product.findByIdAndUpdate(id, { name, description, category, price });
@@ -57,7 +74,9 @@ const updateProduct = async (req, res) => {
 
 const deleteProduct = async (req, res) => {
   try {
-    const { id } = req.params;
+    if (mongoose.connection.readyState !== 1) {
+      return res.render("error", { error: "Database is connecting or offline. Please try again in a few seconds." });
+    }
     await Product.findByIdAndDelete(id);
     res.redirect("/");
   } catch (error) {

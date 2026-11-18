@@ -1,13 +1,13 @@
 import mongoose from "mongoose";
 
+const DEFAULT_MONGO_URL = "mongodb+srv://deepikaarugalla_db_user:CTwGuWP9yQWmDb3p@cluster0.wvbmzxj.mongodb.net";
+
 const connectDB = async () => {
     try {
-        if (!process.env.MONGO_URL) {
-            console.warn("MONGO_URL environment variable not provided; continuing without database");
-            return;
-        }
-        await mongoose.connect(process.env.MONGO_URL, {
-            dbName: process.env.DB_NAME
+        const url = process.env.MONGO_URL || DEFAULT_MONGO_URL;
+        await mongoose.connect(url, {
+            dbName: process.env.DB_NAME || "movieDB",
+            serverSelectionTimeoutMS: 5000
         });
 
         console.log("MongoDB connected successfully");
