@@ -80,9 +80,21 @@ if (whoami.status !== 0) {
   console.log(`   npx vercel logout && npx vercel login\n`);
 }
 
-// 2. Deploy each project
-const results = [];
+// 2. Clean up any stale .vercel folders from previous user accounts
 const rootDir = process.cwd();
+for (const p of projects) {
+  const staleVercel = path.resolve(rootDir, p.dir, ".vercel");
+  if (fs.existsSync(staleVercel)) {
+    fs.rmSync(staleVercel, { recursive: true, force: true });
+  }
+}
+const rootVercel = path.resolve(rootDir, ".vercel");
+if (fs.existsSync(rootVercel)) {
+  fs.rmSync(rootVercel, { recursive: true, force: true });
+}
+
+// 3. Deploy each project
+const results = [];
 
 for (let i = 0; i < projects.length; i++) {
   const p = projects[i];
