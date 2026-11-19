@@ -73,6 +73,51 @@ On Render, each account receives its own unique URLs (Render automatically appen
 
 ---
 
+### 💻 Step 4: In Case Sir Asks for Terminal cURL Commands (CRUD Testing)
+
+> [!TIP]
+> If your instructor asks you to execute **cURL commands in the terminal** to demonstrate CRUD operations directly, use the commands below.
+> 
+> *Replace `<YOUR-FILE-PERSISTENT-DOMAIN-URL>` with your own Render domain from Step 3 (e.g. `file-persistent-app.onrender.com` or `file-persistent-app-xxxx.onrender.com`).*
+
+#### 📁 Faculty File Persistence API (`/api/v1/faculty`)
+*Demonstrates File-based JSON persistence (`fs.readFileSync` / `fs.writeFileSync`) in Node.js & Express.*
+
+| Operation | HTTP Method | Endpoint | Purpose |
+|---|:---:|---|---|
+| **Create** | `POST` | `/api/v1/faculty` | Add a new faculty member |
+| **Read All** | `GET` | `/api/v1/faculty` | Retrieve all faculty records |
+| **Read by ID** | `GET` | `/api/v1/faculty/:id` | Fetch specific faculty by ID |
+| **Update** | `PUT` | `/api/v1/faculty/:id` | Modify faculty details |
+| **Delete** | `DELETE` | `/api/v1/faculty/:id` | Remove faculty record |
+
+##### 1. CREATE — Add New Faculty (POST):
+```bash
+curl -X POST https://<YOUR-FILE-PERSISTENT-DOMAIN-URL>/api/v1/faculty -H "Content-Type: application/json" -d '{"id":3,"name":"Dr.Kumar","department":"CSE","subject":"Java"}'
+```
+
+##### 2. READ ALL — Get All Faculty (GET):
+```bash
+curl -X GET https://<YOUR-FILE-PERSISTENT-DOMAIN-URL>/api/v1/faculty
+```
+
+##### 3. READ BY ID — Get Faculty by ID (GET):
+```bash
+curl -X GET https://<YOUR-FILE-PERSISTENT-DOMAIN-URL>/api/v1/faculty/3
+```
+
+##### 4. UPDATE — Modify Faculty by ID (PUT):
+```bash
+curl -X PUT https://<YOUR-FILE-PERSISTENT-DOMAIN-URL>/api/v1/faculty/3 -H "Content-Type: application/json" -d '{"name":"Dr.Kumar","department":"AI & DS","subject":"Python"}'
+```
+
+##### 5. DELETE — Remove Faculty by ID (DELETE):
+```bash
+curl -X DELETE https://<YOUR-FILE-PERSISTENT-DOMAIN-URL>/api/v1/faculty/3
+```
+
+---
+
 ## 🌐 Reference Live Demos (Deployed by Mahendra Gampala)
 
 > [!NOTE]
