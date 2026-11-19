@@ -113,9 +113,9 @@ for (let i = 0; i < projects.length; i++) {
     const deployCmd = `npx --yes vercel "${targetPath}" --project "${p.name}" --create-if-missing --prod --yes`;
     const output = execSync(deployCmd, { encoding: "utf-8" });
     
-    // Find URL in output
-    const lines = output.trim().split("\n");
-    const liveUrl = lines.find(l => l.includes("https://") && l.includes(".vercel.app"))?.trim() || lines[lines.length - 1].trim();
+    // Find clean URL in output
+    const match = output.match(/https:\/\/[a-zA-Z0-9.-]+\.vercel\.app/);
+    const liveUrl = match ? match[0] : "✅ Deployed";
 
     console.log(`   ✅ Deployed: ${liveUrl}\n`);
     results.push({ name: p.name, title: p.title, url: liveUrl, status: "✅ Ready" });
