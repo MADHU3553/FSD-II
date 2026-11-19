@@ -70,17 +70,22 @@ console.log("==================================================\n");
 
 // 1. Verify Vercel CLI login
 console.log("Checking Vercel CLI login status...");
-const whoami = spawnSync("npx", ["--yes", "vercel", "whoami"], { encoding: "utf-8" });
+let whoami = spawnSync("npx", ["--yes", "vercel", "whoami"], { encoding: "utf-8", shell: true });
 
 if (whoami.status !== 0) {
   console.log("⚠️ You are not logged in to Vercel CLI.");
   console.log("Please authenticate below (press Enter on default prompt):\n");
-  spawnSync("npx", ["--yes", "vercel", "login"], { stdio: "inherit" });
-} else {
-  console.log(`✅ Logged in as: ${whoami.stdout.trim()}`);
-  console.log(`💡 Note: If you want to deploy to a different/friend's account, run:`);
-  console.log(`   npx vercel logout && npx vercel login\n`);
+  spawnSync("npx", ["--yes", "vercel", "login"], { stdio: "inherit", shell: true });
+  whoami = spawnSync("npx", ["--yes", "vercel", "whoami"], { encoding: "utf-8", shell: true });
+  if (whoami.status !== 0) {
+    console.error("\n❌ Login was not completed. Please run: npm run login:vercel\n");
+    process.exit(1);
+  }
 }
+
+console.log(`✅ Logged in as: ${whoami.stdout.trim()}`);
+console.log(`💡 Note: If you want to deploy to a different/friend's account, run:`);
+console.log(`   npx vercel logout && npx vercel login\n`);
 
 // Function to generate clean student README without instructions
 function generateCleanReadme(deployResults) {

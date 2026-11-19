@@ -35,15 +35,21 @@ Now that you have your repository on GitHub:
    git clone https://github.com/<YOUR-USERNAME>/DearFSD.git
    cd DearFSD
    ```
-2. **Run the automated deploy command in that terminal:**
+2. **Log into Vercel CLI (Required first time):**
+   ```bash
+   npm run login:vercel
+   ```
+   *(Choose **Continue with GitHub** or Email and approve in the browser).*
+
+3. **Run the automated deploy command in that terminal:**
    ```bash
    npm run deploy:vercel
    ```
-   *(Or run `./deploy-vercel.sh` or `node deploy-vercel.js`)*
-3. **What happens:**
-   * If you are not logged in, it will prompt you to log into Vercel CLI (press Enter and approve in browser).
    * It will automatically build and deploy all 10 React applications to your Vercel account.
-4. **Command to display all your live Vercel links in a table:**
+   * It will automatically update your local `README.md` with your personal live URLs.
+   * It will display your live projects table (`npx vercel project ls`) in the terminal.
+
+4. **Command to view all your live Vercel links anytime:**
    ```bash
    npx vercel project ls
    ```
