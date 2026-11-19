@@ -230,4 +230,7 @@ Refer to each application's package.json for its available scripts.
 
 * **Author:** **Mahendra Gampala**
 * **GitHub:** [@Mahe13185](https://github.com/Mahe13185)
+* **LinkedIn:** [Mahendra Gampala](https://www.linkedin.com/in/mahendragampala)
 * **Repository:** [https://github.com/Mahe13185/DearFSD](https://github.com/Mahe13185/DearFSD)
+
+⭐ **If you found this repository or automated deployment useful, please star the repo and follow me on [GitHub](https://github.com/Mahe13185) & [LinkedIn](https://www.linkedin.com/in/mahendragampala)!**
