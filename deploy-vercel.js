@@ -75,7 +75,9 @@ if (whoami.status !== 0) {
   console.log("Please authenticate below (press Enter on default prompt):\n");
   spawnSync("npx", ["--yes", "vercel", "login"], { stdio: "inherit" });
 } else {
-  console.log(`✅ Logged in as: ${whoami.stdout.trim()}\n`);
+  console.log(`✅ Logged in as: ${whoami.stdout.trim()}`);
+  console.log(`💡 Note: If you want to deploy to a different/friend's account, run:`);
+  console.log(`   npx vercel logout && npx vercel login\n`);
 }
 
 // 2. Deploy each project
@@ -95,8 +97,8 @@ for (let i = 0; i < projects.length; i++) {
   }
 
   try {
-    // Run vercel deploy directly on the subfolder
-    const deployCmd = `npx --yes vercel "${targetPath}" --name "${p.name}" --prod --yes`;
+    // Run vercel deploy directly on the subfolder with modern project flag
+    const deployCmd = `npx --yes vercel "${targetPath}" --project "${p.name}" --create-if-missing --prod --yes`;
     const output = execSync(deployCmd, { encoding: "utf-8" });
     
     // Find URL in output

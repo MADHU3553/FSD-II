@@ -4,6 +4,8 @@
   "type": "module",
   "description": "DearFSD – Full Stack Development Lab",
   "scripts": {
-    "deploy:vercel": "node deploy-vercel.js"
+    "deploy:vercel": "node deploy-vercel.js",
+    "login:vercel": "npx vercel login",
+    "logout:vercel": "npx vercel logout"
   }
 }

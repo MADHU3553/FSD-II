@@ -48,6 +48,13 @@ Now that you have your repository on GitHub:
    npx vercel project ls
    ```
 
+> [!TIP]
+> **Switching Vercel Accounts:** If your computer is already logged into another Vercel account and you want to deploy to your own or your friend's account, run:
+> ```bash
+> npm run logout:vercel
+> npm run login:vercel
+> ```
+
 ---
 
 ### 🌐 Step 3: Deploy All Backend Services to Render (1-Click Blueprint)
